@@ -99,6 +99,10 @@ class ContactPage extends StatelessWidget {
               onTap: () {
                 print("object");
               },
+              shape: LinearBorder.bottom(
+                side: const BorderSide(color: Color(0x1E000000), width: 1),
+              ),
+              style: ListTileStyle.drawer,
               contentPadding: const EdgeInsets.only(left: 20, top: 0),
               leading: CircleAvatar(
                 backgroundColor: Colors.grey[600]!.withOpacity(0.3),

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       title: "WhatsApp",
       initialRoute: my_router.homeRoute,
       onGenerateRoute: (settings) => my_router.Router.generatedRoutes(settings),

@@ -8,6 +8,7 @@ const contactPageRoute = '/allContacts';
 class Router {
   static Route<dynamic> generatedRoutes(RouteSettings settings) {
     final routeName = settings.name;
+    // ignore: unused_local_variable
     final routeArgs = settings.arguments;
 
     switch (routeName) {
