@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/Coloors.dart';
+import 'package:whatsapp_clone/coolors.dart';
 
 class Contact {
   const Contact({required this.name, required this.about});
@@ -97,7 +97,7 @@ class ContactPage extends StatelessWidget {
           itemBuilder: (context, index) {
             return ListTile(
               onTap: () {
-                print("object");
+                // print("object");
               },
               shape: LinearBorder.bottom(
                 side: const BorderSide(color: Color(0x1E000000), width: 1),

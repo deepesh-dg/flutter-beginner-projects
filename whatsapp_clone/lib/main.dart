@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './Coloors.dart';
+import 'coolors.dart';
 import './routes/router.dart' as my_router;
 import './screens/calls_home_page.dart.dart';
 import './screens/chat_home_page.dart';

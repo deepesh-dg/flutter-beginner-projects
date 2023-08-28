@@ -51,7 +51,7 @@ class Home extends StatelessWidget {
                       "King of beasts: A unique NFT from the collection of fantastic animals",
                 ),
               ),
-              Container(child: const MyButtons()),
+              const MyButtons(),
             ],
           ),
         ));

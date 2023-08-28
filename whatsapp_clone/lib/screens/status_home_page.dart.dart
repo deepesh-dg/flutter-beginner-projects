@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/Coloors.dart';
+import 'package:whatsapp_clone/coolors.dart';
 
 class StatusHomePage extends StatelessWidget {
   const StatusHomePage({super.key});

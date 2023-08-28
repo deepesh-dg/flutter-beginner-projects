@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/Coloors.dart';
+import 'package:whatsapp_clone/coolors.dart';
 import 'package:whatsapp_clone/routes/router.dart';
 
 class Contact {
@@ -42,7 +42,7 @@ class ChatHomePage extends StatelessWidget {
             itemBuilder: (context, index) {
               return ListTile(
                 onTap: () {
-                  print("object");
+                  // print("object");
                 },
                 contentPadding:
                     const EdgeInsets.only(left: 20, top: 0, right: 40),
