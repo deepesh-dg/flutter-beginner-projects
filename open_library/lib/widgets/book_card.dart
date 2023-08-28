@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:open_library/config/my_colors.dart';
 import 'package:open_library/models/book.dart';
+import 'package:open_library/models/book_detials_args.dart';
+import 'package:open_library/routes/all_routes.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;
@@ -10,7 +12,13 @@ class BookCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          AllRoutes.bookDetailsRoute,
+          arguments: BookDetailsArgs(bookId: book.id),
+        );
+      },
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         decoration: BoxDecoration(

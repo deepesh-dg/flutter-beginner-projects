@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_library/models/nav_items.dart';
-import 'package:open_library/services/subjects/service.dart';
+import 'package:open_library/services/search/service.dart';
 import 'package:open_library/widgets/book_card.dart';
 
 class HomeTabContent extends ConsumerWidget {

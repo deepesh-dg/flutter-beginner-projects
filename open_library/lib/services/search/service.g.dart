@@ -6,7 +6,7 @@ part of 'service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$subjectsServiceHash() => r'98b15d61c2b78f976eae4ce7e39c66207a73026c';
+String _$subjectsServiceHash() => r'5fd0e36ed5a8eaa2cb70ecd49b4451a7c483e0e7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,10 @@ class _SystemHash {
 
 abstract class _$SubjectsService
     extends BuildlessAutoDisposeAsyncNotifier<List<Book>> {
-  late final String category;
+  late final String query;
 
   FutureOr<List<Book>> build(
-    String category,
+    String query,
   );
 }
 
@@ -49,10 +49,10 @@ class SubjectsServiceFamily extends Family<AsyncValue<List<Book>>> {
 
   /// See also [SubjectsService].
   SubjectsServiceProvider call(
-    String category,
+    String query,
   ) {
     return SubjectsServiceProvider(
-      category,
+      query,
     );
   }
 
@@ -61,7 +61,7 @@ class SubjectsServiceFamily extends Family<AsyncValue<List<Book>>> {
     covariant SubjectsServiceProvider provider,
   ) {
     return call(
-      provider.category,
+      provider.query,
     );
   }
 
@@ -85,9 +85,9 @@ class SubjectsServiceProvider
     extends AutoDisposeAsyncNotifierProviderImpl<SubjectsService, List<Book>> {
   /// See also [SubjectsService].
   SubjectsServiceProvider(
-    this.category,
+    this.query,
   ) : super.internal(
-          () => SubjectsService()..category = category,
+          () => SubjectsService()..query = query,
           from: subjectsServiceProvider,
           name: r'subjectsServiceProvider',
           debugGetCreateSourceHash:
@@ -99,17 +99,17 @@ class SubjectsServiceProvider
               SubjectsServiceFamily._allTransitiveDependencies,
         );
 
-  final String category;
+  final String query;
 
   @override
   bool operator ==(Object other) {
-    return other is SubjectsServiceProvider && other.category == category;
+    return other is SubjectsServiceProvider && other.query == query;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, category.hashCode);
+    hash = _SystemHash.combine(hash, query.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -119,7 +119,7 @@ class SubjectsServiceProvider
     covariant SubjectsService notifier,
   ) {
     return notifier.build(
-      category,
+      query,
     );
   }
 }

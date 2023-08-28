@@ -1,17 +1,19 @@
 import "package:flutter/material.dart";
+import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:open_library/config/config.dart";
 import "package:open_library/config/my_colors.dart";
 import "package:open_library/models/nav_items.dart";
 import "package:open_library/widgets/home_tab_content.dart";
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Favorites extends ConsumerStatefulWidget {
+  const Favorites({super.key});
 
   @override
-  State<Home> createState() => _Home();
+  ConsumerState<Favorites> createState() => _Favorites();
 }
 
-class _Home extends State<Home> with SingleTickerProviderStateMixin {
+class _Favorites extends ConsumerState<Favorites>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -21,10 +23,6 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
       vsync: this,
       length: Config.navItems.length,
     );
-
-    // _tabController.addListener(() {
-    // print(_tabController.index);
-    // });
   }
 
   @override
@@ -40,7 +38,6 @@ class _Home extends State<Home> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         title: const Text(
           "Menu",
-          // style: Theme.of(context).textTheme.titleLarge,
         ),
         backgroundColor: MyColors.primary,
         flexibleSpace: Opacity(
