@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part "service.g.dart";
 
 @riverpod
-class SubjectsService extends _$SubjectsService {
+class SearchService extends _$SearchService {
   final Service _service = Service(path: "books/v1/volumes");
 
   @override

@@ -1,5 +1,5 @@
 import 'package:open_library/config/config.dart';
-import 'package:open_library/models/my_http_response.dart';
+import 'package:open_library/models/http_response.dart';
 
 import './http_service.dart';
 
@@ -12,7 +12,7 @@ class Service extends HttpService {
     required this.path,
   });
 
-  Future<MyHttpResponse<T>> get<T>(
+  Future<HttpResponse<T>> get<T>(
       {String? path,
       Map<String, String>? headers,
       Map<String, dynamic>? queryParams}) async {
@@ -24,7 +24,7 @@ class Service extends HttpService {
 
       return await $get<T>(finalPath,
           headers: headers, queryParams: queryParams);
-    } on MyHttpException {
+    } on HttpException {
       rethrow;
     }
   }

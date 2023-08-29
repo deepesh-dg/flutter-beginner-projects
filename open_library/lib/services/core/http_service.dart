@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:open_library/models/my_http_response.dart';
+import 'package:open_library/models/http_response.dart';
 import "package:http/http.dart";
 
 class HttpService {
@@ -22,7 +22,7 @@ class HttpService {
   }
 
   @protected
-  Future<MyHttpResponse<TData>> $get<TData>(String path,
+  Future<HttpResponse<TData>> $get<TData>(String path,
       {Map<String, String>? headers, Map<String, dynamic>? queryParams}) async {
     try {
       final response = await _httpClient
@@ -31,11 +31,11 @@ class HttpService {
       final statusCode = response.statusCode;
       final TData decodedResponse = jsonDecode(response.body);
 
-      return MyHttpResponse(
-        success: MySuccess(statusCode: statusCode, data: decodedResponse),
+      return HttpResponse(
+        success: Success(statusCode: statusCode, data: decodedResponse),
       );
     } catch (e) {
-      throw const MyHttpException(
+      throw const HttpException(
           statusCode: 500, type: "Network Error", message: "Network Error");
     }
   }

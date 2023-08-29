@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:open_library/models/my_routes.dart';
 
 class BottomNavData {
   final IconData icon;
   final String label;
-  final MyRoutes routeHandler;
+  final Widget widget;
 
   BottomNavData({
     required this.icon,
     required this.label,
-    required this.routeHandler,
+    required this.widget,
   });
 }

@@ -11,7 +11,7 @@ class HomeTabContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final getBooks = ref.watch(subjectsServiceProvider(navItem.slug));
+    final getBooks = ref.watch(searchServiceProvider(navItem.slug));
 
     return getBooks.when(
       loading: () => const Center(child: Text("Loading...")),

@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:open_library/config/my_colors.dart";
+import 'package:open_library/config/app_colors.dart';
 
 class Search extends ConsumerStatefulWidget {
   const Search({super.key});
@@ -24,12 +24,12 @@ class _Search extends ConsumerState<Search>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         title: const Text(
           "Menu",
         ),
-        backgroundColor: MyColors.primary,
+        backgroundColor: AppColors.primary,
         flexibleSpace: Opacity(
           opacity: 0.4,
           child: Container(

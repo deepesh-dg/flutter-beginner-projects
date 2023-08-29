@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:open_library/config/my_colors.dart';
+import 'package:open_library/config/app_colors.dart';
 import 'package:open_library/services/get/service.dart';
 
 class BookDetails extends ConsumerWidget {
@@ -13,13 +13,13 @@ class BookDetails extends ConsumerWidget {
     final getBook = ref.watch(getBookServiceProvider(bookId));
 
     return Scaffold(
-      backgroundColor: MyColors.white,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         leading: const BackButton(),
         title: const Text(
           "Book Details",
         ),
-        backgroundColor: MyColors.primary,
+        backgroundColor: AppColors.primary,
         flexibleSpace: Opacity(
           opacity: 0.4,
           child: Container(

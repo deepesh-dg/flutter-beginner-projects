@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:open_library/config/config.dart";
-import "package:open_library/config/my_colors.dart";
+import 'package:open_library/config/app_colors.dart';
 import "package:open_library/models/nav_items.dart";
 import "package:open_library/widgets/home_tab_content.dart";
 
@@ -33,12 +33,12 @@ class _Home extends ConsumerState<Home> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.white,
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         title: const Text(
           "Menu",
         ),
-        backgroundColor: MyColors.primary,
+        backgroundColor: AppColors.primary,
         flexibleSpace: Opacity(
           opacity: 0.4,
           child: Container(

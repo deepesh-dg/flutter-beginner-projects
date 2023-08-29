@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:open_library/config/my_colors.dart';
-import 'package:open_library/config/my_theme_data.dart';
+import 'package:open_library/config/app_colors.dart';
+import 'package:open_library/config/app_theme_data.dart';
 import 'package:open_library/models/bottom_nav_data.dart';
-import 'package:open_library/routes/favorites_routes.dart';
-import 'package:open_library/routes/home_routes.dart';
-import 'package:open_library/routes/search_routes.dart';
+import 'package:open_library/routes/app_routes.dart';
+import 'package:open_library/screens/favorites/favorites.dart';
+import 'package:open_library/screens/home/home.dart';
+import 'package:open_library/screens/search/search.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -15,17 +16,17 @@ final List<BottomNavData> _navData = [
   BottomNavData(
     icon: Icons.home,
     label: "Home",
-    routeHandler: HomeRoutes(),
+    widget: const Home(),
   ),
   BottomNavData(
     icon: Icons.explore,
     label: "Search",
-    routeHandler: SearchRoutes(),
+    widget: const Search(),
   ),
   BottomNavData(
     icon: Icons.favorite,
     label: "Favorites",
-    routeHandler: FavoritesRoutes(),
+    widget: const Favorites(),
   ),
 ];
 
@@ -57,10 +58,11 @@ class _MyAppState extends ConsumerState<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Open Library',
-      theme: MyThemeData.getThemeData(),
+      theme: AppThemeData.getThemeData(),
+      onGenerateRoute: (settings) => AppRoutes.generateRoutes(settings),
       home: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: MyColors.lightGrey,
+          backgroundColor: AppColors.lightGrey,
           onTap: setIndex,
           currentIndex: index,
           items: _navData
@@ -71,7 +73,7 @@ class _MyAppState extends ConsumerState<MyApp> {
                 ),
               )
               .toList(),
-          selectedItemColor: MyColors.secondary,
+          selectedItemColor: AppColors.secondary,
           showSelectedLabels: false,
           showUnselectedLabels: false,
         ),
@@ -88,10 +90,7 @@ class _MyAppState extends ConsumerState<MyApp> {
   Widget _buildOffstageNavigator(int index) {
     return Offstage(
       offstage: this.index != index,
-      child: Navigator(
-        onGenerateRoute: (settings) =>
-            _navData.elementAt(index).routeHandler.generateRoutes(settings),
-      ),
+      child: _navData.elementAt(index).widget,
     );
   }
 }

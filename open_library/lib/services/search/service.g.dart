@@ -6,7 +6,7 @@ part of 'service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$subjectsServiceHash() => r'5fd0e36ed5a8eaa2cb70ecd49b4451a7c483e0e7';
+String _$searchServiceHash() => r'5e186d861defebfb324af287a049624eeefa2b7c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-abstract class _$SubjectsService
+abstract class _$SearchService
     extends BuildlessAutoDisposeAsyncNotifier<List<Book>> {
   late final String query;
 
@@ -38,27 +38,27 @@ abstract class _$SubjectsService
   );
 }
 
-/// See also [SubjectsService].
-@ProviderFor(SubjectsService)
-const subjectsServiceProvider = SubjectsServiceFamily();
+/// See also [SearchService].
+@ProviderFor(SearchService)
+const searchServiceProvider = SearchServiceFamily();
 
-/// See also [SubjectsService].
-class SubjectsServiceFamily extends Family<AsyncValue<List<Book>>> {
-  /// See also [SubjectsService].
-  const SubjectsServiceFamily();
+/// See also [SearchService].
+class SearchServiceFamily extends Family<AsyncValue<List<Book>>> {
+  /// See also [SearchService].
+  const SearchServiceFamily();
 
-  /// See also [SubjectsService].
-  SubjectsServiceProvider call(
+  /// See also [SearchService].
+  SearchServiceProvider call(
     String query,
   ) {
-    return SubjectsServiceProvider(
+    return SearchServiceProvider(
       query,
     );
   }
 
   @override
-  SubjectsServiceProvider getProviderOverride(
-    covariant SubjectsServiceProvider provider,
+  SearchServiceProvider getProviderOverride(
+    covariant SearchServiceProvider provider,
   ) {
     return call(
       provider.query,
@@ -77,33 +77,33 @@ class SubjectsServiceFamily extends Family<AsyncValue<List<Book>>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'subjectsServiceProvider';
+  String? get name => r'searchServiceProvider';
 }
 
-/// See also [SubjectsService].
-class SubjectsServiceProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<SubjectsService, List<Book>> {
-  /// See also [SubjectsService].
-  SubjectsServiceProvider(
+/// See also [SearchService].
+class SearchServiceProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<SearchService, List<Book>> {
+  /// See also [SearchService].
+  SearchServiceProvider(
     this.query,
   ) : super.internal(
-          () => SubjectsService()..query = query,
-          from: subjectsServiceProvider,
-          name: r'subjectsServiceProvider',
+          () => SearchService()..query = query,
+          from: searchServiceProvider,
+          name: r'searchServiceProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$subjectsServiceHash,
-          dependencies: SubjectsServiceFamily._dependencies,
+                  : _$searchServiceHash,
+          dependencies: SearchServiceFamily._dependencies,
           allTransitiveDependencies:
-              SubjectsServiceFamily._allTransitiveDependencies,
+              SearchServiceFamily._allTransitiveDependencies,
         );
 
   final String query;
 
   @override
   bool operator ==(Object other) {
-    return other is SubjectsServiceProvider && other.query == query;
+    return other is SearchServiceProvider && other.query == query;
   }
 
   @override
@@ -116,7 +116,7 @@ class SubjectsServiceProvider
 
   @override
   FutureOr<List<Book>> runNotifierBuild(
-    covariant SubjectsService notifier,
+    covariant SearchService notifier,
   ) {
     return notifier.build(
       query,

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:open_library/config/my_colors.dart';
+import 'package:open_library/config/app_colors.dart';
 import 'package:open_library/models/book.dart';
-import 'package:open_library/models/book_detials_args.dart';
-import 'package:open_library/routes/all_routes.dart';
+import 'package:open_library/models/book_details_args.dart';
+import 'package:open_library/routes/app_routes.dart';
 
 class BookCard extends StatelessWidget {
   final Book book;
@@ -15,7 +15,7 @@ class BookCard extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          AllRoutes.bookDetailsRoute,
+          AppRoutes.bookDetailsRoute,
           arguments: BookDetailsArgs(bookId: book.id),
         );
       },
@@ -23,7 +23,7 @@ class BookCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         decoration: BoxDecoration(
           border: Border.fromBorderSide(
-            BorderSide(color: MyColors.darkGrey.withOpacity(0.1), width: 1),
+            BorderSide(color: AppColors.darkGrey.withOpacity(0.1), width: 1),
           ),
         ),
         child: Row(
@@ -35,7 +35,7 @@ class BookCard extends StatelessWidget {
                 clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(Radius.elliptical(8, 8)),
-                  color: MyColors.secondary.withOpacity(0.85),
+                  color: AppColors.secondary.withOpacity(0.85),
                 ),
                 child: Image.network(book.thumbnail ?? ""),
               ),
