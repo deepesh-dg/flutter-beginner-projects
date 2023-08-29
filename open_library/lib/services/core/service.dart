@@ -15,8 +15,9 @@ class Service extends HttpService {
   Future<MyHttpResponse<T>> get<T>(
       {String? path,
       Map<String, String>? headers,
-      Map<String, dynamic> queryParams = const {}}) async {
+      Map<String, dynamic>? queryParams}) async {
     try {
+      queryParams ??= {};
       queryParams.addEntries({"key": Config.apiKey}.entries);
 
       final finalPath = path != null ? '${this.path}$path' : this.path;
