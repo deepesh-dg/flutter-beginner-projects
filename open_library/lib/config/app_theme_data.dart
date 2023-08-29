@@ -4,6 +4,10 @@ import 'package:open_library/config/app_colors.dart';
 
 class AppThemeData {
   static final textTheme = TextTheme(
+    titleLarge: GoogleFonts.inter(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+    ),
     bodyLarge: GoogleFonts.inter(
       fontSize: 20,
       fontWeight: FontWeight.w700,
