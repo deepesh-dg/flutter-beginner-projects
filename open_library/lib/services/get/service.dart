@@ -5,16 +5,28 @@ import "package:riverpod_annotation/riverpod_annotation.dart";
 part "service.g.dart";
 
 @riverpod
-class GetBookService extends _$GetBookService {
-  final Service _service = Service(path: "books/v1/volumes");
+FutureOr<Book> getBookService(GetBookServiceRef ref, String bookId) async {
+  final Service service = Service(path: "books/v1/volumes");
 
-  @override
-  FutureOr<Book> build(String bookId) async {
-    final responseData =
-        await _service.get<Map<String, dynamic>>(path: '/$bookId');
+  final responseData =
+      await service.get<Map<String, dynamic>>(path: '/$bookId');
 
-    final book = Book.fromJson(responseData.success.data);
+  final book = Book.fromJson(responseData.success.data);
 
-    return book;
-  }
+  return book;
 }
+
+// @riverpod
+// class GetBookService extends _$GetBookService {
+//   final Service _service = Service(path: "books/v1/volumes");
+
+//   @override
+//   FutureOr<Book> build(String bookId) async {
+//     final responseData =
+//         await _service.get<Map<String, dynamic>>(path: '/$bookId');
+
+//     final book = Book.fromJson(responseData.success.data);
+
+//     return book;
+//   }
+// }

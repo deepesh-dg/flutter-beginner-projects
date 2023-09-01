@@ -6,7 +6,7 @@ part of 'service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$searchServiceHash() => r'5e186d861defebfb324af287a049624eeefa2b7c';
+String _$searchServiceHash() => r'67417655be9bce13cb48e0a470ae19ea4b772ff4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,25 +29,18 @@ class _SystemHash {
   }
 }
 
-abstract class _$SearchService
-    extends BuildlessAutoDisposeAsyncNotifier<List<Book>> {
-  late final String query;
+typedef SearchServiceRef = AutoDisposeFutureProviderRef<List<Book>>;
 
-  FutureOr<List<Book>> build(
-    String query,
-  );
-}
-
-/// See also [SearchService].
-@ProviderFor(SearchService)
+/// See also [searchService].
+@ProviderFor(searchService)
 const searchServiceProvider = SearchServiceFamily();
 
-/// See also [SearchService].
+/// See also [searchService].
 class SearchServiceFamily extends Family<AsyncValue<List<Book>>> {
-  /// See also [SearchService].
+  /// See also [searchService].
   const SearchServiceFamily();
 
-  /// See also [SearchService].
+  /// See also [searchService].
   SearchServiceProvider call(
     String query,
   ) {
@@ -80,14 +73,16 @@ class SearchServiceFamily extends Family<AsyncValue<List<Book>>> {
   String? get name => r'searchServiceProvider';
 }
 
-/// See also [SearchService].
-class SearchServiceProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<SearchService, List<Book>> {
-  /// See also [SearchService].
+/// See also [searchService].
+class SearchServiceProvider extends AutoDisposeFutureProvider<List<Book>> {
+  /// See also [searchService].
   SearchServiceProvider(
     this.query,
   ) : super.internal(
-          () => SearchService()..query = query,
+          (ref) => searchService(
+            ref,
+            query,
+          ),
           from: searchServiceProvider,
           name: r'searchServiceProvider',
           debugGetCreateSourceHash:
@@ -112,15 +107,6 @@ class SearchServiceProvider
     hash = _SystemHash.combine(hash, query.hashCode);
 
     return _SystemHash.finish(hash);
-  }
-
-  @override
-  FutureOr<List<Book>> runNotifierBuild(
-    covariant SearchService notifier,
-  ) {
-    return notifier.build(
-      query,
-    );
   }
 }
 // ignore_for_file: type=lint

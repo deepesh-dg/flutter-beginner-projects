@@ -6,7 +6,7 @@ part of 'service.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getBookServiceHash() => r'9a5960b8751aac6110f49fc958581c0f9e7ce9e2';
+String _$getBookServiceHash() => r'd8555acd3fe1af939a2472fd8885c5da45a65ee9';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,25 +29,18 @@ class _SystemHash {
   }
 }
 
-abstract class _$GetBookService
-    extends BuildlessAutoDisposeAsyncNotifier<Book> {
-  late final String bookId;
+typedef GetBookServiceRef = AutoDisposeFutureProviderRef<Book>;
 
-  FutureOr<Book> build(
-    String bookId,
-  );
-}
-
-/// See also [GetBookService].
-@ProviderFor(GetBookService)
+/// See also [getBookService].
+@ProviderFor(getBookService)
 const getBookServiceProvider = GetBookServiceFamily();
 
-/// See also [GetBookService].
+/// See also [getBookService].
 class GetBookServiceFamily extends Family<AsyncValue<Book>> {
-  /// See also [GetBookService].
+  /// See also [getBookService].
   const GetBookServiceFamily();
 
-  /// See also [GetBookService].
+  /// See also [getBookService].
   GetBookServiceProvider call(
     String bookId,
   ) {
@@ -80,14 +73,16 @@ class GetBookServiceFamily extends Family<AsyncValue<Book>> {
   String? get name => r'getBookServiceProvider';
 }
 
-/// See also [GetBookService].
-class GetBookServiceProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<GetBookService, Book> {
-  /// See also [GetBookService].
+/// See also [getBookService].
+class GetBookServiceProvider extends AutoDisposeFutureProvider<Book> {
+  /// See also [getBookService].
   GetBookServiceProvider(
     this.bookId,
   ) : super.internal(
-          () => GetBookService()..bookId = bookId,
+          (ref) => getBookService(
+            ref,
+            bookId,
+          ),
           from: getBookServiceProvider,
           name: r'getBookServiceProvider',
           debugGetCreateSourceHash:
@@ -112,15 +107,6 @@ class GetBookServiceProvider
     hash = _SystemHash.combine(hash, bookId.hashCode);
 
     return _SystemHash.finish(hash);
-  }
-
-  @override
-  FutureOr<Book> runNotifierBuild(
-    covariant GetBookService notifier,
-  ) {
-    return notifier.build(
-      bookId,
-    );
   }
 }
 // ignore_for_file: type=lint
