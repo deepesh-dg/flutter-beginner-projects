@@ -6,10 +6,9 @@ part "service.g.dart";
 
 @riverpod
 FutureOr<Book> getBookService(GetBookServiceRef ref, String bookId) async {
-  final Service service = Service(path: "books/v1/volumes");
+  final Service service = Service.volume(bookId);
 
-  final responseData =
-      await service.get<Map<String, dynamic>>(path: '/$bookId');
+  final responseData = await service.get<Map<String, dynamic>>();
 
   final book = Book.fromJson(responseData.success.data);
 

@@ -28,4 +28,8 @@ class Service extends HttpService {
       rethrow;
     }
   }
+
+  factory Service.volume([String bookId = ""]) {
+    return Service(path: "books/v1/volumes/$bookId");
+  }
 }

@@ -7,7 +7,7 @@ part "service.g.dart";
 
 @riverpod
 FutureOr<List<Book>> searchService(SearchServiceRef ref, String query) async {
-  final Service service = Service(path: "books/v1/volumes");
+  final Service service = Service.volume();
   final responseData =
       await service.get<Map<String, dynamic>>(queryParams: {"q": query});
 
