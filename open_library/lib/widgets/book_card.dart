@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:open_library/config/app_colors.dart';
 import 'package:open_library/models/book.dart';
 import 'package:open_library/models/book_details_args.dart';
 import 'package:open_library/routes/app_routes.dart';
+import 'package:open_library/services/get/service.dart';
 
-class BookCard extends StatelessWidget {
+class BookCard extends ConsumerWidget {
+  final Book? book;
+  final String? bookId;
+
+  const BookCard({super.key, this.book, this.bookId});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (book != null) {
+      return Card(book: book!);
+    }
+
+    if (bookId != null) {
+      final getBook = ref.watch(getBookServiceProvider(bookId!));
+
+      return getBook.when(
+        loading: () => const Center(child: Text("Loading...")),
+        data: (book) => Card(book: book),
+        error: (err, stack) =>
+            const Center(child: Text("Something sWent Wrong...")),
+      );
+    }
+
+    throw UnimplementedError();
+  }
+}
+
+class Card extends StatelessWidget {
   final Book book;
 
-  const BookCard({super.key, required this.book});
+  const Card({super.key, required this.book});
 
   @override
   Widget build(BuildContext context) {

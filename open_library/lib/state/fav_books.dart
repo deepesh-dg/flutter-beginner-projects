@@ -1,3 +1,4 @@
+// import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:riverpod_annotation/riverpod_annotation.dart";
 
 part 'fav_books.g.dart';
@@ -5,7 +6,7 @@ part 'fav_books.g.dart';
 @riverpod
 class FavoriteBooksStore extends _$FavoriteBooksStore {
   @override
-  build() {
+  List<String> build() {
     return <String>[];
   }
 
@@ -17,7 +18,9 @@ class FavoriteBooksStore extends _$FavoriteBooksStore {
 
   remove(String bookId) {
     if (state.contains(bookId)) {
-      state = state.where((bId) => bId != bookId);
+      state = state.where((bId) => bId != bookId).toList();
     }
   }
 }
+
+// final favBookContainerState = ProviderContainer();

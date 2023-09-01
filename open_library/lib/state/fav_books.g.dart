@@ -7,12 +7,12 @@ part of 'fav_books.dart';
 // **************************************************************************
 
 String _$favoriteBooksStoreHash() =>
-    r'da5865ec67e936faf5436b8481f981f4ecaffc91';
+    r'009981a264078f5a15b8c571888750466efd14c7';
 
 /// See also [FavoriteBooksStore].
 @ProviderFor(FavoriteBooksStore)
 final favoriteBooksStoreProvider =
-    AutoDisposeNotifierProvider<FavoriteBooksStore, dynamic>.internal(
+    AutoDisposeNotifierProvider<FavoriteBooksStore, List<String>>.internal(
   FavoriteBooksStore.new,
   name: r'favoriteBooksStoreProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,6 +22,6 @@ final favoriteBooksStoreProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$FavoriteBooksStore = AutoDisposeNotifier<dynamic>;
+typedef _$FavoriteBooksStore = AutoDisposeNotifier<List<String>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member

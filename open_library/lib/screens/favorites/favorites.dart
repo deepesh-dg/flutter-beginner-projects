@@ -1,43 +1,21 @@
 import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
-import "package:open_library/config/config.dart";
-import 'package:open_library/config/app_colors.dart';
-import "package:open_library/models/nav_items.dart";
-import "package:open_library/widgets/home_tab_content.dart";
+import "package:open_library/config/app_colors.dart";
+import "package:open_library/state/fav_books.dart";
+import "package:open_library/widgets/book_card.dart";
 
-class Favorites extends ConsumerStatefulWidget {
+class Favorites extends ConsumerWidget {
   const Favorites({super.key});
 
   @override
-  ConsumerState<Favorites> createState() => _Favorites();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final List<String> bookIds = ref.watch(favoriteBooksStoreProvider);
 
-class _Favorites extends ConsumerState<Favorites>
-    with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(
-      vsync: this,
-      length: Config.navItems.length,
-    );
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
         title: const Text(
-          "Menu",
+          "Favorite Books",
         ),
         backgroundColor: AppColors.primary,
         flexibleSpace: Opacity(
@@ -51,23 +29,12 @@ class _Favorites extends ConsumerState<Favorites>
             ),
           ),
         ),
-        bottom: TabBar(
-          controller: _tabController,
-          isScrollable: true,
-          tabs: Config.navItems
-              .map(
-                (NavItem navItem) => Tab(
-                  text: navItem.name,
-                ),
-              )
-              .toList(),
-        ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: Config.navItems
-            .map((navItem) => HomeTabContent(navItem: navItem))
-            .toList(),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: bookIds.map((bookId) => BookCard(bookId: bookId)).toList(),
+        ),
       ),
     );
   }
